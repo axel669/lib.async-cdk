@@ -47,3 +47,30 @@ const app = new cdk.App()
 await TestStack.create(app, "dev", {})
 await TestStack.create(app, "prod", {})
 ```
+
+### rollupCode
+The rollupCode function is an async function that runs rollup, with full support
+for the use of plugins.
+
+> rollup-stack.js
+```js
+import { AsyncStack, rollupCode } from "@axel669/async-cdk"
+
+export class RollupStack extends AsyncStack {
+    async build(env, props) {
+        new NodejsFunction(
+            this,
+            "test-func",
+            {
+                functionName: "test-func",
+                memorySize: 128,
+                runtime: lambda.Runtime.NODEJS_20_X,
+                handler: "index.handler",
+                code: await rollupCode({
+                    input: "src/main.js"
+                })
+            }
+        )
+    }
+}
+```
