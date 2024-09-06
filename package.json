@@ -1,6 +1,6 @@
 {
-  "name": "@axel669/cdk-rollup",
-  "version": "1.0.0",
+  "name": "@axel669/async-cdk",
+  "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "type": "module",
