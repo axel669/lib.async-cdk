@@ -13,7 +13,7 @@ pnpm add @axel669/async-cdk
 ### AsyncStack
 The AsyncStack was kept very minimal so that switching to an async cdk would be
 simple and quick. Stacks can inherit from AsyncStack instead of the standard
-cdk stack (AsyncStack inherits from that already), and only need to write a
+cdk stack (AsyncStack inherits from that already), and only need to have a
 build function that does the same work you would normally do in the constructor.
 This combined with the static create method that takes the same signature as
 the normal constructor is all that's needed.
@@ -50,7 +50,9 @@ await TestStack.create(app, "prod", {})
 
 ### rollupCode
 The rollupCode function is an async function that runs rollup, with full support
-for the use of plugins.
+for the use of plugins. The argument to rollupCode is the same as a regular
+rollup build command minus the output (the wrapper compiles to a temp location
+automatically).
 
 > rollup-stack.js
 ```js
